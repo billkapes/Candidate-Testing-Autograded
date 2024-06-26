@@ -52,11 +52,15 @@ function gradeQuiz(candidateAnswers) {
     console.log("Answer incorrect");
   }
 */
+  let numOfCorrectAnswers = 0;
   for (let i = 0; i < questions.length; i++) {
-    console.log(`${i+1} ${questions[i]}- Your answer: ${candidateAnswers[i]}`);
+    console.log(`${i+1} ${questions[i]} | Your answer: ${candidateAnswers[i]} | Correct answer: ${correctAnswers[i]}`);
+    if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()) {
+      numOfCorrectAnswers++;
+    }
   }
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  grade = numOfCorrectAnswers / questions.length * 100;
 
   return grade;
 }
