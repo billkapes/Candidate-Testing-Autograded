@@ -39,29 +39,35 @@ function askQuestion() {
   for (let i = 0; i < questions.length; i++) {
     candidateAnswers[i] = input.question(questions[i]);
   }
-  
+  console.log('\n');
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  /*
+/*
   if (candidateAnswer === correctAnswer) {
     console.log("Answer correct.");
   } else {
     console.log("Answer incorrect");
   }
 */
+  console.log(`Canidate name: ${candidateName}`);
   let numOfCorrectAnswers = 0;
   for (let i = 0; i < questions.length; i++) {
-    console.log(`${i+1} ${questions[i]} | Your answer: ${candidateAnswers[i]} | Correct answer: ${correctAnswers[i]}`);
+    console.log(`${i+1}) ${questions[i]} \n Your answer: ${candidateAnswers[i]} \n Correct answer: ${correctAnswers[i]}\n`);
     if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()) {
       numOfCorrectAnswers++;
     }
   }
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
   grade = numOfCorrectAnswers / questions.length * 100;
-
+  console.log(`>>> Overall Grade: ${grade}% (${numOfCorrectAnswers} of ${questions.length}) correct) <<<`);
+  if (grade < 80) {
+    console.log(">>> Status: FAILED <<<");
+  } else {
+    console.log(">>> Status: PASSED <<<");
+  }
   return grade;
 }
 
